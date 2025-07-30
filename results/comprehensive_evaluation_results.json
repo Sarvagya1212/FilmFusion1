@@ -1,0 +1,59 @@
+{
+  "evaluation_timestamp": "2025-07-30T15:21:09.917301",
+  "best_model": "SVD++",
+  "model_rankings": {
+    "SVD++": {
+      "rank": 1,
+      "f1_score": 0.13964932923064344
+    },
+    "TF-IDF": {
+      "rank": 2,
+      "f1_score": 0.053896696351636394
+    },
+    "Metadata": {
+      "rank": 3,
+      "f1_score": 0.02220317671889451
+    }
+  },
+  "metrics_champions": {
+    "precision_at_k": {
+      "model": "SVD++",
+      "score": 0.17552083333333335
+    },
+    "recall_at_k": {
+      "model": "SVD++",
+      "score": 0.18898870055948314
+    },
+    "f1_at_k": {
+      "model": "SVD++",
+      "score": 0.13964932923064344
+    },
+    "ndcg_at_k": {
+      "model": "SVD++",
+      "score": 0.2562984208390741
+    },
+    "catalog_coverage": {
+      "model": "SVD++",
+      "score": 0.09540695710908477
+    },
+    "diversity": {
+      "model": "SVD++",
+      "score": 0.9795
+    },
+    "novelty": {
+      "model": "SVD++",
+      "score": 0.7240305343511452
+    },
+    "success_rate": {
+      "model": "SVD++",
+      "score": 1.0
+    }
+  },
+  "evaluation_summary": {
+    "models_evaluated": 3,
+    "best_f1_score": 0.13964932923064344,
+    "best_precision": 0.17552083333333335,
+    "best_recall": 0.18898870055948314,
+    "evaluation_method": "comprehensive_framework"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "evaluation_timestamp": "2025-07-30T12:22:55.508024",
+  "models_evaluated": [
+    "TF-IDF",
+    "Metadata"
+  ],
+  "evaluation_results": {
+    "TF-IDF": {
+      "precision": 0.0494949494949495,
+      "recall": 0.059157791148002015,
+      "f1": 0.053896696351636394,
+      "coverage": 0.0707531239446133,
+      "users_with_recs": 100,
+      "total_users": 100
+    },
+    "Metadata": {
+      "precision": 0.03333333333333334,
+      "recall": 0.016645249653123546,
+      "f1": 0.02220317671889451,
+      "coverage": 0.057919621749408984,
+      "users_with_recs": 61,
+      "total_users": 100
+    }
+  },
+  "test_users_sample_size": 100,
+  "recommendations_per_user": 10
+}

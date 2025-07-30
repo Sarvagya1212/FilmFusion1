@@ -1,0 +1,9 @@
+{
+  "total_processed": 0,
+  "successful_enrichments": 0,
+  "failed_searches": 0,
+  "success_rate": 0,
+  "timestamp": "2025-07-29T22:05:01.325271",
+  "enrichment_date": "2025-07-29",
+  "failure_reasons": {}
+}

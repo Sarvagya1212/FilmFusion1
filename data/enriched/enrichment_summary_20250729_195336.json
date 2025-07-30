@@ -1,0 +1,9 @@
+{
+  "timestamp": "20250729_195336",
+  "total_processed": 100,
+  "successful_enrichments": 96,
+  "failed_searches": 4,
+  "success_rate": 96.0,
+  "enriched_file": "data\\enriched\\movies_enriched_20250729_195336.csv",
+  "failed_file": "data\\enriched\\failed_searches_20250729_195336.csv"
+}

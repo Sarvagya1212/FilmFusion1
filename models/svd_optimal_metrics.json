@@ -1,0 +1,6 @@
+{
+  "final_rmse": 0.8609,
+  "final_mae": 0.6614,
+  "cross_val_std": 0.0054,
+  "optimization_date": "2025-07-30T02:52:26.880938"
+}

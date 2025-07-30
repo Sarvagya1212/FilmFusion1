@@ -1,0 +1,26 @@
+# Core Data Science (Airflow-compatible versions)
+pandas
+numpy
+scikit-learn
+scipy
+
+# Database
+sqlalchemy>=1.4.0,<2.0.0  # Important: Keep below 2.0 for Airflow compatibility
+
+# API and Web
+requests
+fastapi
+uvicorn[standard]
+
+# Text Processing
+nltk
+textblob
+
+# Visualization
+matplotlib
+seaborn
+plotly
+# Utilities
+python-dotenv
+tqdm
+pyyaml

@@ -1,0 +1,72 @@
+{
+  "tfidf": {
+    "shape": [
+      5918,
+      5000
+    ],
+    "sparsity": 0.996165157147685,
+    "avg_features_per_doc": 19.174214261574857,
+    "max_feature_value": 0.9357702413043046,
+    "min_feature_value": 0.0
+  },
+  "embeddings": {
+    "shape": [
+      5922,
+      200
+    ],
+    "mean": -3.6756693094317296e-05,
+    "std": 0.004721697841330855,
+    "zero_embeddings": 10,
+    "nan_count": 0
+  },
+  "numerical": {
+    "shape": [
+      5922,
+      7
+    ],
+    "mean": -3.743059051517631e-15,
+    "std": 1.0000000000000049,
+    "nan_count": 0,
+    "inf_count": 0
+  },
+  "categorical": {
+    "genres": {
+      "shape": [
+        5922,
+        19
+      ],
+      "sparsity": 0.8667057715210011,
+      "active_features_per_item": 2.5325903411009794
+    }
+  },
+  "coverage": {
+    "total_movies": 5922,
+    "feature_coverage": {
+      "tfidf": {
+        "count": 5918,
+        "percentage": 99.9324552516042
+      },
+      "embeddings": {
+        "count": 5922,
+        "percentage": 100.0
+      },
+      "categorical": {
+        "count": 5922,
+        "percentage": 100.0
+      },
+      "numerical": {
+        "count": 5922,
+        "percentage": 100.0
+      }
+    }
+  },
+  "overall_quality": {
+    "score": 0.6673820747141398,
+    "grade": "Fair",
+    "component_scores": {
+      "tfidf": 0.003834842852314946,
+      "embeddings": 0.9983113812901047,
+      "numerical": 1.0
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "movie_count": 5922,
+  "features": {
+    "tfidf": {
+      "available": true,
+      "shape": [
+        5918,
+        5000
+      ],
+      "type": "sparse"
+    },
+    "embeddings": {
+      "available": true,
+      "shape": [
+        5922,
+        200
+      ],
+      "type": "dense"
+    },
+    "categorical": {
+      "available": true,
+      "shape": {
+        "genres": [
+          5922,
+          19
+        ]
+      },
+      "type": "dense"
+    },
+    "numerical": {
+      "available": true,
+      "shape": [
+        5922,
+        7
+      ],
+      "type": "dense"
+    }
+  }
+}
