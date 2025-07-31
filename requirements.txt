@@ -1,26 +1,56 @@
-# Core Data Science (Airflow-compatible versions)
-pandas
-numpy
-scikit-learn
-scipy
-
-# Database
-sqlalchemy>=1.4.0,<2.0.0  # Important: Keep below 2.0 for Airflow compatibility
-
-# API and Web
-requests
+# Core Python packages
 fastapi
 uvicorn[standard]
+pydantic
 
-# Text Processing
+# Database
+SQLAlchemy
+asyncpg
+psycopg2-binary
+
+# Redis (for caching/session management)
+redis
+aioredis
+
+# Data processing and ML
+pandas
+numpy
+scipy
+scikit-learn
+surprise
+gensim
+
+# NLP libraries for feature engineering
 nltk
-textblob
+wordcloud
 
-# Visualization
-matplotlib
-seaborn
+# Deep learning for Neural CF
+torch
+torchvision
+
+# API utilities
+httpx
+
+# Async support, logging, and retrying
+tenacity
+
+# Web application (Dashboard)
+streamlit
 plotly
-# Utilities
+seaborn
+matplotlib
+
+# Configuration and environment
 python-dotenv
-tqdm
-pyyaml
+
+# Testing
+pytest
+pytest-cov
+
+# Airflow or orchestration-specific packages (optional, as you use docker image)
+apache-airflow-providers-postgres
+apache-airflow-providers-redis
+
+# Additional tools
+requests
+

@@ -5,11 +5,12 @@ from surprise.model_selection import train_test_split
 from typing import List, Tuple
 import pickle
 from pathlib import Path
+import logging
 
 from ..base_recommender import BaseRecommender
 
 class MatrixFactorizationRecommender(BaseRecommender):
-    """SVD++ Matrix Factorization using Surprise library"""
+    """SVD++ Matrix Factorization using Surprise library with save/load functionality"""
     
     def __init__(self, n_factors=100, n_epochs=20, lr_all=0.005, reg_all=0.02):
         super().__init__("SVD++ Matrix Factorization")
@@ -57,7 +58,7 @@ class MatrixFactorizationRecommender(BaseRecommender):
         self.model.fit(self.trainset)
         
         self.is_fitted = True
-        self.logger.info(f"✅ {self.name} training completed")
+        self.logger.info(f"{self.name} training completed")
         
         return self
     
@@ -115,19 +116,26 @@ class MatrixFactorizationRecommender(BaseRecommender):
     
     def save_model(self, path: str):
         """Save trained model"""
+        if not self.is_fitted:
+            raise ValueError("Model must be fitted before saving")
+        
         model_data = {
             'model': self.model,
             'trainset': self.trainset,
-            'user_mapping': self.user_mapping,
-            'item_mapping': self.item_mapping,
-            'reverse_user_mapping': self.reverse_user_mapping,
-            'reverse_item_mapping': self.reverse_item_mapping,
+            'user_mapping': getattr(self, 'user_mapping', {}),
+            'item_mapping': getattr(self, 'item_mapping', {}),
+            'reverse_user_mapping': getattr(self, 'reverse_user_mapping', {}),
+            'reverse_item_mapping': getattr(self, 'reverse_item_mapping', {}),
+            'ratings_df': self.ratings_df,
             'parameters': {
                 'n_factors': self.n_factors,
                 'n_epochs': self.n_epochs,
                 'lr_all': self.lr_all,
                 'reg_all': self.reg_all
-            }
+            },
+            'is_fitted': self.is_fitted,
+            'n_users': getattr(self, 'n_users', 0),
+            'n_items': getattr(self, 'n_items', 0)
         }
         
         with open(path, 'wb') as f:
@@ -135,25 +143,34 @@ class MatrixFactorizationRecommender(BaseRecommender):
         
         self.logger.info(f"Model saved to {path}")
     
-    def save_model(self, path: str):
-        """Enhanced save method that includes ratings_df"""
-        model_data = {
-            'model': self.model,
-            'trainset': self.trainset,
-            'ratings_df': self.ratings_df,  
-            'user_mapping': self.user_mapping,
-            'item_mapping': self.item_mapping,
-            'reverse_user_mapping': self.reverse_user_mapping,
-            'reverse_item_mapping': self.reverse_item_mapping,
-            'parameters': {
-                'n_factors': self.n_factors,
-                'n_epochs': self.n_epochs,
-                'lr_all': self.lr_all,
-                'reg_all': self.reg_all
-            }
-        }
-        
-        with open(path, 'wb') as f:
-            pickle.dump(model_data, f)
-        
-        self.logger.info(f"Model saved to {path}")
+    def load_model(self, path: str):
+        """Load trained model"""
+        try:
+            with open(path, 'rb') as f:
+                model_data = pickle.load(f)
+            
+            self.model = model_data['model']
+            self.trainset = model_data['trainset']
+            self.user_mapping = model_data.get('user_mapping', {})
+            self.item_mapping = model_data.get('item_mapping', {})
+            self.reverse_user_mapping = model_data.get('reverse_user_mapping', {})
+            self.reverse_item_mapping = model_data.get('reverse_item_mapping', {})
+            self.ratings_df = model_data.get('ratings_df')
+            self.n_users = model_data.get('n_users', len(self.user_mapping))
+            self.n_items = model_data.get('n_items', len(self.item_mapping))
+            
+            # Restore parameters
+            params = model_data.get('parameters', {})
+            self.n_factors = params.get('n_factors', self.n_factors)
+            self.n_epochs = params.get('n_epochs', self.n_epochs)
+            self.lr_all = params.get('lr_all', self.lr_all)
+            self.reg_all = params.get('reg_all', self.reg_all)
+            
+            self.is_fitted = model_data.get('is_fitted', True)
+            
+            self.logger.info(f"Model loaded from {path}")
+            
+        except FileNotFoundError:
+            raise FileNotFoundError(f"Model file not found at {path}")
+        except Exception as e:
+            raise Exception(f"Error loading model: {e}")
